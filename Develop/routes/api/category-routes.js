@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
  try{
   const foundCategory = await Category.findAll({
     include: {
-      model: "Product",
+      
     }
   })
   if(!foundCategory){

@@ -2,16 +2,26 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // API END POINTS
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all tags
-  Tag.findAll({
-    include: {
+  try{
+    const foundTag = await Tag.findAll({
+      include: [{
         model: Product,
         through: ProductTag,
-        as: 'tagged_products'
-      }
-    
-  })
+        attributes: ['id', 'product_name', 'price',
+         'stock', 'category_id',],exclude: ['category_id']
+      }]
+    })
+    if(!foundTag){
+      res.status(404).json({message: "No Found"})
+    }
+    else{
+      res.status(200).json(foundTag);
+    }
+  }catch(err){
+    res.status(500).json({message: " System Error, please try again"})
+  }
   // be sure to include its associated Product data
 });
 
