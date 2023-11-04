@@ -6,9 +6,10 @@ const { Category, Product } = require('../../models');
 router.get('/', async (req, res) => {
  try{
   const foundCategory = await Category.findAll({
-    include: {
-      
-    }
+    include: [{
+      model: Product,
+      attributes:[ 'product_name', 'price', 'stock', 'category_id']
+    }]
   })
   if(!foundCategory){
     res.status(404).json({message: "No Found"})
