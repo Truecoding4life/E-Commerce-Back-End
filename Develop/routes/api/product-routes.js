@@ -135,8 +135,19 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+router.delete('/:id', async (req, res) => {
+  try{
+    const productDelete = await Product.destroy({where: {id:1},
+    })
+    if(!productDelete){
+      res.status(404).json('No Product Found for this Delete Request')
+    }
+    else{
+      res.status(200).json("Product Delete Success")
+    }
+  } catch(err){
+    res.status(500).json("System Error, please try again")
+  }
 });
 
 module.exports = router;

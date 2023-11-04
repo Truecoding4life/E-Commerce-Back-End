@@ -62,13 +62,12 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", async (req, res) => {
   // delete on tag by its `id` value
   try{
-    const foundTag = await Tag.findOne(req.params.id)
+    const foundTag = await Tag.destroy({ where: { id: req.params.id }});
     if(!foundTag){
      return res.status(404).json({message: "Can't Find Tag"})
-    } else{
-        Tag.destroy({ where: { id: req.params.id } });
-      return res.status(200).json("Tag Deleted from Database")
-    }
+    } 
+    return res.status(200).json("Tag Deleted from Database");
+    
   } catch(err){
     return res.status(500).json({message: "System Error, please try again"})
   }

@@ -15,17 +15,17 @@ Category.hasMany(Product,{
 })
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
-  through: 'ProductTag', // The name of the junction table
-  foreignKey: 'product_id', // The foreign key in the junction table that references the product
-  otherKey: 'tag_id', // The foreign key in the junction table that references the tag
+  through: {
+    model: ProductTag,
+    unique: false,
+  },
 });
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
-  onDelete: 'CASCADE',
-  through: 'ProductTag', // The name of the junction table
-  foreignKey: 'tag_id', // The foreign key in the junction table that references the tag
-  otherKey: 'product_id', // The foreign key in the junction table that references the product
-  otherKey: 'product_id', // The foreign key in the junction table that references the product
+  through: {
+    model: ProductTag,
+    unique: false,
+  },
 }); 
 module.exports = {
   Product,
