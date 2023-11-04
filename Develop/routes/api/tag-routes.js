@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const newPost = await Tag.create({
+  await Tag.create({
     tag_name: req.body.tag_name,
   });
   res.status(200).json('New tag have been create on Database')
@@ -58,13 +58,26 @@ router.post("/", async (req, res) => {
 
 });
 
-router.put("/:id", (req, res) => {
-  // update a tag's name by its `id` value
+
+// UPDATE ROUTE
+router.put("/:id", async (req, res) => {
+  try{
+    const foundTag = await Tag.update(req.body, { where: { id: req.params.id } });
+    if(!foundTag){
+      res.status(404).json({message: "Can't Find Tag"})
+    }
+    else{
+      res.status(200).json(req.body)
+    }
+  }catch(err){
+    res.status(500).json({message: "System Error, please try again"})
+  }
   Tag.update(req.body, { where: { id: req.params.id } });
 });
 
+
+// DELETE ROUTE 
 router.delete("/:id", async (req, res) => {
-  // delete on tag by its `id` value
   try{
     const foundTag = await Tag.destroy({ where: { id: req.params.id }});
     if(!foundTag){
