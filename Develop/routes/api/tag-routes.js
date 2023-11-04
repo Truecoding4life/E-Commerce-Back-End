@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
         {
           model: Product,
           through: ProductTag,
-          attributes: ["id", "product_name", "price", "stock", "category_id"],
+          attributes: [ "product_name", "price", "stock", "category_id"],
         },
       ],
     });
@@ -49,9 +49,13 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
-  // create a new tag
-  Tag.create(req.body);
+router.post("/", async (req, res) => {
+  const newPost = await Tag.create({
+    tag_name: req.body.tag_name,
+  });
+  res.status(200).json('New tag have been create on Database')
+  
+
 });
 
 router.put("/:id", (req, res) => {
