@@ -10,15 +10,18 @@ const ProductTag = require('./ProductTag');
  })
 // Categories have many Products
 Category.hasMany(Product,{
+   onDelete: 'CASCADE' ,
   foreignKey:"category_id",
 })
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag,{
+  onDelete: 'CASCADE',
   through:ProductTag,
   foreignKey:"product_id",
 })
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product,{
+  onDelete: 'CASCADE' ,
   through:ProductTag,
   foreignKey:"tag_id",
 })
