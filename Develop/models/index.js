@@ -14,17 +14,19 @@ Category.hasMany(Product,{
   foreignKey:"category_id",
 })
 // Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag,{
-  onDelete: 'CASCADE',
-  through:ProductTag,
-  foreignKey:"product_id",
-})
+Product.belongsToMany(Tag, {
+  through: 'ProductTag', // The name of the junction table
+  foreignKey: 'product_id', // The foreign key in the junction table that references the product
+  otherKey: 'tag_id', // The foreign key in the junction table that references the tag
+});
 // Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product,{
-  onDelete: 'CASCADE' ,
-  through:ProductTag,
-  foreignKey:"tag_id",
-})
+Tag.belongsToMany(Product, {
+  onDelete: 'CASCADE',
+  through: 'ProductTag', // The name of the junction table
+  foreignKey: 'tag_id', // The foreign key in the junction table that references the tag
+  otherKey: 'product_id', // The foreign key in the junction table that references the product
+  otherKey: 'product_id', // The foreign key in the junction table that references the product
+}); 
 module.exports = {
   Product,
   Category,
