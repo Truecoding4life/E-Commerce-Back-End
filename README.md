@@ -17,11 +17,11 @@
 
 
 ### Description 
-Internet retail, also known as **e-commerce**, plays a significant role within the electronics industry, as it empowers businesses and consumers alike to conveniently engage in online buying and selling of electronic products. In the latest available data from 2021, the industry in the United States alone was estimated to have generated the substantial amount of US$2.54 trillion, according to the United Nations Conference on Trade and Development. E-commerce platforms like Shopify and WooCommerce provide a suite of services to businesses of all sizes. Due to the prevalence of these platforms, I have to experience myself how to connect these back end data together, here is how I did it.
+My back-end application empowers e-commerce operations within the electronics industry, streamlining online transactions for electronic products. In 2021, the U.S. e-commerce sector reached a substantial $2.54 trillion in revenue. As the use of a database is vital in every industry, my back-end application excels at managing this essential aspect with efficiency and precision. I was able to edit, update, delete, read, or create new data in the database, enhancing its functionality and utility.
 
 -------------
 
-### How is it used ?
+### How is it used?
 
 [Demonstration of the Application](https://watch.screencastify.com/v/MRjTzzSvQCYuudqIcPXk)
 
@@ -35,7 +35,7 @@ Internet retail, also known as **e-commerce**, plays a significant role within t
 ---
 
 ### Usage
-Feel free to use my application however you would like, add to it or edit it, have fun with it and make it better .
+Feel free to use my application however you want. Add to it, edit it, have fun with it, and make it better.
 
 ---
 
