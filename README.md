@@ -69,4 +69,4 @@ Feel free to use my application however you want. Add to it, edit it, have fun w
 
 
 
-This Application is made available by Jay's Studio © 
+This Application is made available by © Jay's Studio
